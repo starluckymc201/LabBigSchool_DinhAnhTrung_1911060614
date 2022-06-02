@@ -9,7 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(LabBigSchool_DinhAnhTrung_1911060614.Models.ApplicationDbContext context)

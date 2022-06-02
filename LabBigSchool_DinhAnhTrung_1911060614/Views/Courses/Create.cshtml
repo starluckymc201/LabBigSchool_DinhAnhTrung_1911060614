@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("Create", "Courses"))
 {
-
+    @Html.AntiForgeryToken()
     //First Time
     <form>
         <div class="form-group">
@@ -39,4 +39,8 @@
 
         <button type="submit" , value="Save" class="btn btn-primary">Save</button>
     </form>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundle.jqueryval");
 }

@@ -17,6 +17,8 @@ namespace LabBigSchool_DinhAnhTrung_1911060614.Controllers
         {
             _dbContext = new ApplicationDbContext();
         }
+
+        [Authorize]
         public ActionResult Create()
         {
             var viewModel = new CourseViewModel
@@ -28,8 +30,14 @@ namespace LabBigSchool_DinhAnhTrung_1911060614.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                viewModel.Categories = _dbContext.Categories.ToList();
+                return View("Create", viewModel);
+            }
             var course = new Course
             {
                 LectureId = User.Identity.GetUserId(),
