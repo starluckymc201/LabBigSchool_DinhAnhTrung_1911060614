@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LabBigSchool_DinhAnhTrung_1911060614.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,9 +10,18 @@ namespace LabBigSchool_DinhAnhTrung_1911060614.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext _dbContext;
+        public HomeController()
+        {
+            _dbContext = new ApplicationDbContext();
+        }
         public ActionResult Index()
         {
-            return View();
+            var upcomingCourses = _dbContext.Courses
+                .Include(a => a.Lecture)
+                .Include(b => b.Category)
+                .Where(c => c.DateTime > DateTime.Now);
+            return View(upcomingCourses);
         }
 
         public ActionResult About()

@@ -17,7 +17,7 @@ namespace LabBigSchool_DinhAnhTrung_1911060614.ViewModel
                 CultureInfo.CurrentCulture,
                 DateTimeStyles.None,
                 out dateTime);
-            return isValid; 
+            return isValid && dateTime > DateTime.Now; 
         }
     }
 }
