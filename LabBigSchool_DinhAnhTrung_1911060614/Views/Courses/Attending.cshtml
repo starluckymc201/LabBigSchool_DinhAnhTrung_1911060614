@@ -1,12 +1,14 @@
 ﻿@model LabBigSchool_DinhAnhTrung_1911060614.viewModels.CourseViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Attending";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Attending</h2>
 <div class="row">
     <ul class="course">
-        @foreach(var course in Model.UpcomingCourses)
-         {
+        @foreach (var course in Model.UpcomingCourses)
+        {
             <li>
                 <div class="date">
                     <div class="month">
@@ -33,7 +35,7 @@
                     }
                 </div>
             </li>
-         }
+        }
     </ul>
 </div>
 
@@ -65,5 +67,5 @@
                     });
             });
         });
-    </script>    
+    </script>
 }
